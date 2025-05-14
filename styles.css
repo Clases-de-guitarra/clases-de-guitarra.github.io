@@ -1,0 +1,460 @@
+/* Variables y Reset */
+:root {
+    --primary: #FF4D4D;
+    --primary-dark: #e04545;
+    --dark: #1A1A2E;
+    --light: #F5F5F5;
+    --white: #FFFFFF;
+    --text-dark: #333333;
+    --text-light: #777777;
+    --gradient: linear-gradient(135deg, var(--primary), #FF8E53);
+    --container-width: 1200px;
+    --mobile-padding: 1.25rem;
+    --section-padding: 5rem;
+    --card-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.1);
+    --easing: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+    opacity: 0;
+    transition: opacity 0.6s var(--easing);
+}
+
+/* Tipografía Responsiva */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+/* Layout */
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--mobile-padding);
+}
+
+section {
+    position: relative;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    min-height: 600px;
+    max-height: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    overflow: hidden;
+    background: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 var(--mobile-padding);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white);
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+    opacity: 0.7;
+    z-index: 2;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-20px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+}
+
+/* Botones */
+.btn, .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s var(--easing);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.btn {
+    background: var(--gradient);
+    color: var(--white);
+    box-shadow: var(--card-shadow);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px -5px rgba(255, 77, 77, 0.4);
+}
+
+.btn-outline {
+    border: 2px solid var(--white);
+    color: var(--white);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: var(--white);
+    color: var(--primary);
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* Secciones comunes */
+section {
+    padding: var(--section-padding) 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Servicios */
+.services {
+    background: var(--light);
+}
+
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: var(--card-shadow);
+    transition: all 0.4s var(--easing);
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.card i {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    color: var(--dark);
+}
+
+.card p {
+    color: var(--text-light);
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+}
+
+.price strong {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Sobre Emmanuel */
+.about {
+    background: var(--dark);
+    color: var(--white);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-img {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    aspect-ratio: 1/1;
+}
+
+.about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--easing);
+}
+
+.about-text h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.teaching-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+}
+
+.teaching-info ul {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.teaching-info li {
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.teaching-info li i {
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    color: var(--primary);
+}
+
+.signature {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin: 2rem 0;
+}
+
+.signature span {
+    display: block;
+    text-align: right;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0.5rem;
+}
+
+/* Contacto */
+.contact {
+    background: url('https://guitarraviva.com/wp-content/uploads/2016/12/arpegios-guitarra.jpg') no-repeat center center/cover;
+    position: relative;
+    color: var(--white);
+    text-align: center;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 46, 0.9);
+}
+
+.contact-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact h2 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: 1.5rem;
+}
+
+.contact p {
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    opacity: 0.9;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Footer */
+footer {
+    background: var(--dark);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+}
+
+/* Animaciones */
+[data-aos] {
+    transition: opacity 0.6s var(--easing), transform 0.6s var(--easing);
+}
+
+[data-aos="fade-up"] {
+    transform: translateY(30px);
+    opacity: 0;
+}
+
+[data-aos="fade-up"].aos-animate {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Media Queries Específicas */
+@media (max-width: 480px) {
+    :root {
+        --mobile-padding: 1rem;
+        --section-padding: 3.5rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .btn, .btn-outline {
+        width: 100%;
+        padding: 0.8rem;
+    }
+    
+    .service-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    :root {
+        --section-padding: 6rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    :root {
+        --container-width: 1100px;
+    }
+}
+
+@media (min-width: 1441px) {
+    :root {
+        --container-width: 1400px;
+        --section-padding: 7rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 4.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.5rem;
+    }
+    
+    .card {
+        padding: 3rem;
+    }
+}
+
+/* Optimizaciones de rendimiento */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Helper Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
